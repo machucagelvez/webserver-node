@@ -7,7 +7,7 @@ const port = process.env.PORT
 
 //Handlebars
 app.set('view engine', 'hbs')
-hbs.registerPartials(__dirname + '/views/partials', function (err) {console.log('Error:', err)});
+hbs.registerPartials(__dirname + '/views/partials');
 
 // Servir contenido estático
 app.use(express.static('public'))
@@ -37,7 +37,7 @@ app.get('/elements', (req, res) => {
 
 app.get('*', (req, res) => {
     //Responder con un archivo que está en la ruta especificado como argumento
-  res.sendFile(__dirname + '/public/404.html')
+  res.render('404')
 })
  
 app.listen(port, () => {
